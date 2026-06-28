@@ -1,0 +1,76 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Source Sans 3', system-ui, sans-serif;
+
+  /* Newspaper palette */
+  --color-paper: #f9f9f7;
+  --color-paper-2: #f3f2ed;
+  --color-rule: #e0ddd6;
+  --color-rule-dark: #c9c4ba;
+  --color-charcoal: #2a2a2a;
+  --color-charcoal-muted: #5c5c5c;
+  --color-editorial: #b33d3d;
+  --color-editorial-hover: #942f2f;
+  --color-editorial-soft: #f5e8e8;
+
+  /* Legacy aliases used across pages */
+  --color-cream-50: var(--color-paper);
+  --color-cream-100: var(--color-paper-2);
+  --color-cream-200: var(--color-rule);
+  --color-amber-100: var(--color-editorial-soft);
+  --color-amber-200: var(--color-rule-dark);
+  --color-amber-500: var(--color-editorial);
+  --color-amber-400: var(--color-editorial);
+  --color-amber-600: var(--color-editorial-hover);
+  --color-amber-700: var(--color-editorial-hover);
+  --color-ink-700: var(--color-charcoal-muted);
+  --color-ink-800: var(--color-charcoal);
+  --color-ink-900: #1a1a1a;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--color-paper);
+  color: var(--color-charcoal);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle newsprint grain */
+.paper-surface {
+  position: relative;
+  isolation: isolate;
+}
+
+.paper-surface::before {
+  content: '';
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.paper-surface > * {
+  position: relative;
+  z-index: 1;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+/* Masthead dateline lines */
+.dateline-rule {
+  flex: 1;
+  height: 0;
+  border-top: 1px solid var(--color-rule);
+  min-width: 1rem;
+}
